@@ -1,6 +1,0 @@
-(library
- (name sum)
- (c_names sum_stubs)
- (c_flags
-  (-I /home/alberto/workspace/ocaml-dune/libsum/include))
- (c_library_flags (-L/home/alberto/workspace/ocaml-dune/libsum/build/shared) (-L/home/alberto/workspace/ocaml-dune/libsum/build/static) (-lsum)))

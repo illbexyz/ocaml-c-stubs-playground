@@ -1,0 +1,8 @@
+(library
+ (name sum)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test))
+ (c_names sum_stubs)
+ (c_flags (-I../../../../libsum/include))
+ (c_library_flags (-L../../libsum/build) (-lsum)))

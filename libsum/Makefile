@@ -10,12 +10,12 @@ DIRS		= $(BUILD_DIR) $(STATIC_DIR) $(SHARED_DIR)
 
 .PHONY: all dirs clean
 
-all: dirs $(STATIC_DIR)/lib$(LIB_NAME).a $(SHARED_DIR)/lib$(LIB_NAME).so
+all: dirs $(BUILD_DIR)/lib$(LIB_NAME).a $(BUILD_DIR)/lib$(LIB_NAME).so
 
-$(STATIC_DIR)/lib$(LIB_NAME).a: $(STATIC_DIR)/$(LIB_NAME).o
+$(BUILD_DIR)/lib$(LIB_NAME).a: $(STATIC_DIR)/$(LIB_NAME).o
 	ar rcs $@ $<
 
-$(SHARED_DIR)/lib$(LIB_NAME).so: $(SHARED_DIR)/$(LIB_NAME).o
+$(BUILD_DIR)/lib$(LIB_NAME).so: $(SHARED_DIR)/$(LIB_NAME).o
 	$(CC) -shared $^ -L$(HEADERS_DIR) -o $@
 
 $(STATIC_DIR)/%.o: $(SRC_DIR)/%.c
