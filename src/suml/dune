@@ -1,0 +1,32 @@
+(library
+ (name sum)
+;  (libraries sum_c)
+;  (c_names sum_stubs)
+;  (c_flags
+;   (-I libsum/include))
+;  (c_library_flags (-lsum))
+ (self_build_stubs_archive (sum)))
+
+(data_only_dirs libsum)
+
+(rule
+ (deps (source_tree libsum))
+ (targets libsum_stubs.a dllsum_stubs.so)
+ (action
+  (bash "cd libsum && \
+         make && \
+         cd .. && \
+         cp libsum/build/static/libsum.a libsum_stubs.a && \
+         cp libsum/build/shared/libsum.so dllsum_stubs.so")))
+;    (chdir libsum (run make))
+;    (copy ./libsum/libsum.a libsum_stubs.a)
+;    (copy libsum/libsum.so dllsum_stubs.so))))
+
+; (rule
+;  (deps (source_tree libsum))
+;  (targets libsum_stubs.a dllsum_stubs.so)
+;  (action
+;   (progn
+;    (chdir libsum (run make))
+;    (copy ./libsum/libsum.a libsum_stubs.a)
+;    (copy libsum/libsum.so dllsum_stubs.so))))

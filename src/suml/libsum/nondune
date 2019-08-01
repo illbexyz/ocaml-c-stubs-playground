@@ -1,0 +1,3 @@
+(library
+ (name sum_c)
+ (self_build_stubs_archive (sum_c)))
