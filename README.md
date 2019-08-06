@@ -39,7 +39,7 @@ The main files are:
 
 ## Building and running (UNIX)
 
-Note: Windows is not currently supported.;;
+Note: Windows is not currently supported.
 
 By running:
 
