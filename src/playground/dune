@@ -1,0 +1,9 @@
+(library
+ (name playground)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test))
+ (c_names playground_stubs)
+ ; I really don't know why the ../../ is needed but this seems to work... 
+ (c_flags (-I../../%{project_root}/libplayground/include))
+ (c_library_flags (-L%{project_root}/libplayground/build) (-lplayground)))
