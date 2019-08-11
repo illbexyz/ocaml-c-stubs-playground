@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/playground.h"
+#include "playground.h"
 
 void hello_world() {
     printf("hello from C!\n");

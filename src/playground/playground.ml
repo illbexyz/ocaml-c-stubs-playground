@@ -8,6 +8,8 @@ external array_head_to_zero : int array -> unit = "array_head_to_zero_stub"
 
 external concat_strings : string -> string -> string = "concat_strings_stub"
 
+external animal_speak : unit -> unit = "animal_speak_stub"
+
 let%test "sum" = sum 1 2 = 3
 
 let%test "sum_int_array" =

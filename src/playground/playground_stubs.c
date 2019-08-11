@@ -9,6 +9,7 @@
 #include <caml/fail.h>
 
 #include "playground.h"
+#include "animal.h"
 
 #define check_ml_str_and_fail_if_contains_null(str)\
     if (!caml_string_is_c_safe(str)) {\
@@ -73,4 +74,18 @@ concat_strings_stub(value vStr1, value vStr2) {
     char *res = concat_strings(s1, s2);
     vRes = caml_copy_string(res);
     CAMLreturn(vRes);
+}
+
+// TODO: animal_init, dog_init, cat_init stubs
+
+void animal_speak_stub()
+{
+    CAMLparam0();
+    Animal animal = animal_init("Animalo");
+    Dog dog = dog_init("Charlie The Doggo");
+    Cat cat = cat_init("Foxy The Catto");
+    animal_speak(&animal);
+    animal_speak(dog_to_animal(&dog));
+    animal_speak((Animal*) &cat);
+    CAMLreturn0;
 }
