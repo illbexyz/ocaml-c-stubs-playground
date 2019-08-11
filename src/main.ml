@@ -1,17 +1,29 @@
-let sum_res = Playground.sum 1 2
+let () =
+  print_endline "Testing hello_world:";
+  Playground.hello_world ();
+  print_newline ()
 
 let () =
+  print_endline "Testing animal_speak:";
+  Playground.animal_speak ();
+  print_newline ()
+
+let () =
+  print_endline "Testing array_head_to_zero ([|1; 2; 3|]):";
   let arr = [|1; 2; 3|] in
-  let () = Playground.array_head_to_zero arr in
-  Array.iter print_int arr
+  Playground.array_head_to_zero arr;
+  Array.iter print_int arr;
+  print_string "\n\n"
 
-;;
-print_newline ()
+let () = 
+  print_endline "Testing concat_strings ('hello', ' world'):";
+  let res = Playground.concat_strings "hello" " world" in
+  Gc.full_major ();
+  print_string (res ^ "\n");
+  print_newline ()
 
-(* let expected = "hello world" in *)
-(* let actual = Playground.concat_strings "hello" " world" in
-    let () = Gc.full_major () in
-    print_string (actual ^ "\n") *)
-(* Playground.sum_int_array [|1; 2|] 2 *)
-(* let () = Playground.hello_world () in
-    print_endline ("The result of 1 + 2 is: " ^ string_of_int sum_res) *)
+let () =  
+  print_endline "Testing sum_int_array [|1; 2|]:";
+  let res = Playground.sum_int_array [|1; 2|] in
+  print_endline ("Result: " ^ string_of_int res);
+  print_newline ()
