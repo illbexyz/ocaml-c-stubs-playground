@@ -1,3 +1,8 @@
+type -'a obj
+type animal = [`base]
+type dog = [animal | `dog]
+type cat = [animal | `cat]
+
 external hello_world : unit -> unit = "hello_world_stub"
 
 external sum : int -> int -> int = "sum_stub"
@@ -8,7 +13,9 @@ external array_head_to_zero : int array -> unit = "array_head_to_zero_stub"
 
 external concat_strings : string -> string -> string = "concat_strings_stub"
 
-external animal_speak : unit -> unit = "animal_speak_stub"
+external new_animal : string -> animal obj = "new_animal_stub"
+
+external animal_speak : animal obj -> unit = "animal_speak_stub"
 
 let%test "sum" = sum 1 2 = 3
 

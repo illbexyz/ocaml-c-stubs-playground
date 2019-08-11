@@ -10,13 +10,15 @@ struct _Animal {
 };
 
 struct _AnimalVTable {
+    void (*destructor)(Animal *self);
     void (*speak)(Animal *self);
 };
 
-Animal animal_init(char *name);
+Animal* animal_new(char *name);
+void animal_delete(Animal *animal);
 
-static inline void animal_speak(Animal *self) {
-    self->vtable->speak(self);
+static inline void animal_speak(Animal *animal) {
+    animal->vtable->speak(animal);
 }
 
 // ============================= Dog =====================================
@@ -31,10 +33,12 @@ struct _Dog {
 
 struct _DogVTable {
     AnimalVTable *parent;
+    void (*destructor)(Animal *self);
     void (*speak)(Animal *self);
 };
 
-Dog dog_init(char *name);
+Dog* dog_new(char *name);
+void dog_delete(Dog *dog);
 
 static inline Animal* dog_to_animal(Dog *self) {
     return &(self->parent);
@@ -52,10 +56,12 @@ struct _Cat {
 
 struct _CatVTable {
     AnimalVTable *parent;
+    void (*destructor)(Animal *self);
     void (*speak)(Animal *self);
 };
 
-Cat cat_init(char *name);
+Cat* cat_new(char *name);
+void cat_delete(Cat *cat);
 
 static inline Animal* cat_to_animal(Cat *self) {
     return &(self->parent);

@@ -1,11 +1,12 @@
 let () =
-  print_endline "Testing hello_world:";
-  Playground.hello_world ();
+  print_endline "Testing new_animal and animal_speak";
+  let animal = Playground.new_animal "Carlo" in
+  Playground.animal_speak animal;
   print_newline ()
 
 let () =
-  print_endline "Testing animal_speak:";
-  Playground.animal_speak ();
+  print_endline "Testing hello_world:";
+  Playground.hello_world ();
   print_newline ()
 
 let () =

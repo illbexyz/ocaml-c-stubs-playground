@@ -76,16 +76,34 @@ concat_strings_stub(value vStr1, value vStr2) {
     CAMLreturn(vRes);
 }
 
-// TODO: animal_init, dog_init, cat_init stubs
-
-void animal_speak_stub()
-{
+CAMLprim value
+new_animal_stub() {
     CAMLparam0();
-    Animal animal = animal_init("Animalo");
-    Dog dog = dog_init("Charlie The Doggo");
-    Cat cat = cat_init("Foxy The Catto");
-    animal_speak(&animal);
-    animal_speak(dog_to_animal(&dog));
-    animal_speak((Animal*) &cat);
+    Animal *animal = animal_new("Animalo");
+    value v_pointer = caml_alloc(1, Abstract_tag);
+    Field(v_pointer, 0) = (value) animal;
+    // TODO: What happens when this value will get GC-ed?
+    // it should call the animal destructor in some way
+    CAMLreturn(v_pointer);
+}
+
+// TODO: new_dog, new_cat stubs
+
+void animal_speak_stub(value v_animal) {
+    CAMLparam1(v_animal);
+    Animal *animal = (Animal*) Field(v_animal, 0);
+    animal_speak(animal);
     CAMLreturn0;
 }
+
+// void create_animal_speak_stub()
+// {
+//     CAMLparam0();
+//     Animal *animal = animal_new("Animalo");
+//     Dog *dog = dog_new("Charlie");
+//     Cat *cat = cat_new("Felix");
+//     animal_speak(animal);
+//     animal_speak((Animal*) dog);
+//     animal_speak((Animal*) cat);
+//     CAMLreturn0;
+// }
