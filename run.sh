@@ -5,7 +5,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Tell the linked where to find the playground library
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$DIR/libplayground/build
+DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$DIR/libplayground/build
 export LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH
 
 exec_arg () {
     if [ "$1" == "test" ]; then
