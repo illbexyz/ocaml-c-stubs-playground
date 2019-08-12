@@ -4,6 +4,13 @@ let () =
   Playground.animal_speak animal;
   print_newline ()
 
+  let () =
+    let open Playground in
+    print_endline "Testing new_dog and animal_speak from a subclass";
+    let dog = new_dog "Charlie" in
+    animal_speak (dog :> animal obj);
+    print_newline ()
+
 let () =
   print_endline "Testing hello_world:";
   Playground.hello_world ();

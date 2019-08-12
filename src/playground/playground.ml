@@ -1,7 +1,13 @@
+(* obj represents an object built from C. *)
+(* It is contravariant, meaning that if 'a is subtype of 'b, *)
+(* then 'a obj is supertype of 'b obj *)
 type -'a obj
 type animal = [`base]
 type dog = [animal | `dog]
 type cat = [animal | `cat]
+
+(* In this example "animal" is a subtype of "dog", hence by the *)
+(* contravariance rule "animal obj" is a supertype of "dog obj" *)
 
 external hello_world : unit -> unit = "hello_world_stub"
 
@@ -14,6 +20,8 @@ external array_head_to_zero : int array -> unit = "array_head_to_zero_stub"
 external concat_strings : string -> string -> string = "concat_strings_stub"
 
 external new_animal : string -> animal obj = "new_animal_stub"
+
+external new_dog : string -> dog obj = "new_dog_stub"
 
 external animal_speak : animal obj -> unit = "animal_speak_stub"
 

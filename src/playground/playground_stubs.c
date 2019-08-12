@@ -87,6 +87,17 @@ new_animal_stub() {
     CAMLreturn(v_pointer);
 }
 
+CAMLprim value
+new_dog_stub() {
+    CAMLparam0();
+    Dog *dog = dog_new("Charlie");
+    value v_pointer = caml_alloc(1, Abstract_tag);
+    Field(v_pointer, 0) = (value) dog;
+    // TODO: What happens when this value will get GC-ed?
+    // it should call the animal destructor in some way
+    CAMLreturn(v_pointer);
+}
+
 // TODO: new_dog, new_cat stubs
 
 void animal_speak_stub(value v_animal) {
@@ -95,15 +106,3 @@ void animal_speak_stub(value v_animal) {
     animal_speak(animal);
     CAMLreturn0;
 }
-
-// void create_animal_speak_stub()
-// {
-//     CAMLparam0();
-//     Animal *animal = animal_new("Animalo");
-//     Dog *dog = dog_new("Charlie");
-//     Cat *cat = cat_new("Felix");
-//     animal_speak(animal);
-//     animal_speak((Animal*) dog);
-//     animal_speak((Animal*) cat);
-//     CAMLreturn0;
-// }
