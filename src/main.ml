@@ -1,15 +1,17 @@
 let () =
-  print_endline "Testing new_animal and animal_speak";
-  let animal = Playground.new_animal "Carlo" in
-  Playground.animal_speak animal;
+  let open Playground in
+  print_endline "Testing animal class:";
+  let animal = animal ~name:"Rufus" in
+  animal#animal_speak ();
   print_newline ()
 
-  let () =
-    let open Playground in
-    print_endline "Testing new_dog and animal_speak from a subclass";
-    let dog = new_dog "Charlie" in
-    animal_speak (dog :> animal obj);
-    print_newline ()
+let () =
+  let open Playground in
+  print_endline "Testing dog class:";
+  let dog = dog ~name:"Charlie" in
+  dog#animal_speak ();
+  print_endline @@ dog#do_you_wanna_walk ();
+  print_newline ()
 
 let () =
   print_endline "Testing hello_world:";
@@ -33,5 +35,4 @@ let () =
 let () =  
   print_endline "Testing sum_int_array [|1; 2|]:";
   let res = Playground.sum_int_array [|1; 2|] in
-  print_endline ("Result: " ^ string_of_int res);
-  print_newline ()
+  print_endline ("Result: " ^ string_of_int res)
