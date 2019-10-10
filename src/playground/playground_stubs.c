@@ -82,8 +82,6 @@ new_animal_stub() {
     Animal *animal = animal_new("Animalo");
     value v_pointer = caml_alloc(1, Abstract_tag);
     Field(v_pointer, 0) = (value) animal;
-    // TODO: What happens when this value will get GC-ed?
-    // it should call the animal destructor in some way
     CAMLreturn(v_pointer);
 }
 
@@ -93,12 +91,8 @@ new_dog_stub() {
     Dog *dog = dog_new("Charlie");
     value v_pointer = caml_alloc(1, Abstract_tag);
     Field(v_pointer, 0) = (value) dog;
-    // TODO: What happens when this value will get GC-ed?
-    // it should call the animal destructor in some way
     CAMLreturn(v_pointer);
 }
-
-// TODO: new_dog, new_cat stubs
 
 void animal_speak_stub(value v_animal) {
     CAMLparam1(v_animal);
