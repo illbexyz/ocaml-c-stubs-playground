@@ -94,9 +94,12 @@ new_dog_stub() {
     CAMLreturn(v_pointer);
 }
 
+#define Animal_val(v_val)\
+    (Animal*) Field(v_val, 0);
+
 void animal_speak_stub(value v_animal) {
     CAMLparam1(v_animal);
-    Animal *animal = (Animal*) Field(v_animal, 0);
+    Animal *animal = Animal_val(v_animal);
     animal_speak(animal);
     CAMLreturn0;
 }

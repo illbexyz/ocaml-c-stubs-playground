@@ -31,11 +31,11 @@ end
 let animal ~name = new animal (Animal.new_animal name)
 
 class dog obj = object
-  inherit animal obj
+  inherit animal (obj :> Types.animal obj)
   method do_you_wanna_walk () = "Yes pleease!"
 end
 
-let dog ~name = new dog ((Dog.new_dog name) :> Types.animal obj)
+let dog ~name = new dog (Dog.new_dog name)
 
 external hello_world : unit -> unit = "hello_world_stub"
 
