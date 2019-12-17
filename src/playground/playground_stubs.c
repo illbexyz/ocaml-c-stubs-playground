@@ -81,7 +81,7 @@ new_animal_stub() {
     CAMLparam0();
     Animal *animal = animal_new("Animalo");
     value v_pointer = caml_alloc(1, Abstract_tag);
-    Field(v_pointer, 0) = (value) animal;
+    Store_field(v_pointer, 0, (value) animal);
     CAMLreturn(v_pointer);
 }
 
@@ -90,7 +90,7 @@ new_dog_stub() {
     CAMLparam0();
     Dog *dog = dog_new("Charlie");
     value v_pointer = caml_alloc(1, Abstract_tag);
-    Field(v_pointer, 0) = (value) dog;
+    Store_field(v_pointer, 0, (value) dog);
     CAMLreturn(v_pointer);
 }
 
